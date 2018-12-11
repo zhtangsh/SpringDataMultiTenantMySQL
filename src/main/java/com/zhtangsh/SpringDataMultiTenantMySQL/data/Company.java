@@ -2,11 +2,13 @@ package com.zhtangsh.SpringDataMultiTenantMySQL.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Created by Zihan Eric Tang(mrzihan.tang@gmail.com) on 2018/12/10
  */
 @Entity
+@Table(name = "company")
 public class Company {
     @Id
     private long id;

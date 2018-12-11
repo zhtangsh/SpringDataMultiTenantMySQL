@@ -5,15 +5,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author Created by Zihan Eric Tang(mrzihan.tang@gmail.com) on 2018/12/10
+ * @author Created by Zihan Eric Tang(mrzihan.tang@gmail.com) on 2018/12/11
  */
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "currency")
+public class Currency {
     @Id
     private long id;
     private String name;
-    private String extra;
+    private String extras;
 
     public long getId() {
         return id;
@@ -31,11 +31,11 @@ public class User {
         this.name = name;
     }
 
-    public String getExtra() {
-        return extra;
+    public String getExtras() {
+        return extras;
     }
 
-    public void setExtra(String extra) {
-        this.extra = extra;
+    public void setExtras(String extras) {
+        this.extras = extras;
     }
 }
