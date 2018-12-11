@@ -1,4 +1,4 @@
-package com.zhtangsh.SpringDataMultiTenantMySQL.data;
+package com.zhtangsh.SpringDataMultiTenantMySQL.tenant.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,7 +1,8 @@
 package com.zhtangsh.SpringDataMultiTenantMySQL;
 
-import com.zhtangsh.SpringDataMultiTenantMySQL.data.CompanyRepository;
-import com.zhtangsh.SpringDataMultiTenantMySQL.data.UserRepository;
+import com.zhtangsh.SpringDataMultiTenantMySQL.tenant.repository.CompanyRepository;
+import com.zhtangsh.SpringDataMultiTenantMySQL.tenant.repository.CurrencyRepository;
+import com.zhtangsh.SpringDataMultiTenantMySQL.tenant.repository.UserRepository;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,9 +25,13 @@ public class SipleEndpoint {
     @Inject
     private CompanyRepository companyRepository;
 
+    @Inject
+    private CurrencyRepository currencyRepository;
+
     @GET
     @Path("user")
     public Response getUsers() {
+        currencyRepository.findAll();
         return Response.ok(this.userRepository.findAll()).build();
     }
 

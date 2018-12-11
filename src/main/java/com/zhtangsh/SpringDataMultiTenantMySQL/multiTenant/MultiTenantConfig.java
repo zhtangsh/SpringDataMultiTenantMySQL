@@ -1,5 +1,7 @@
 package com.zhtangsh.SpringDataMultiTenantMySQL.multiTenant;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +14,9 @@ import java.util.Map;
 /**
  * @author Created by Zihan Eric Tang(mrzihan.tang@gmail.com) on 2018/12/11
  */
-@Configuration
+//@Configuration
 public class MultiTenantConfig {
+    private Logger logger = LoggerFactory.getLogger(MultiTenantConfig.class);
 
     @Bean
     public DataSource dataSource() {
@@ -22,21 +25,24 @@ public class MultiTenantConfig {
         targetDataSources.put("cc", cc());
         targetDataSources.put("dd", dd());
         abstractRoutingDataSource.setTargetDataSources(targetDataSources);
+        abstractRoutingDataSource.setDefaultTargetDataSource(targetDataSources.get("cc"));
         abstractRoutingDataSource.afterPropertiesSet();
         return abstractRoutingDataSource;
     }
 
-    private DataSource cc() {
+    public DataSource cc() {
         return DataSourceBuilder.create()
                 .url("jdbc:mysql://10.19.140.200:32143/cc")
+                .driverClassName("com.mysql.jdbc.Driver")
                 .username("root")
                 .password("root")
                 .build();
     }
 
-    private DataSource dd() {
+    public DataSource dd() {
         return DataSourceBuilder.create()
                 .url("jdbc:mysql://10.19.140.200:32143/dd")
+                .driverClassName("com.mysql.jdbc.Driver")
                 .username("root")
                 .password("root")
                 .build();
